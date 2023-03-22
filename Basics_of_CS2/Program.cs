@@ -87,14 +87,19 @@ namespace Basics_of_CS2
             for (int i = 0; i < size; i++)
                 Console.Write(arr2[i] + (i != size - 1 ? " , " : ""));
             Console.WriteLine("\n");
-
+            Array.Sort(arr3);
+            Array.Reverse(arr3);
             Console.Write(" Array3 : ");
             for (int i = 0; i < size; i++)
                 Console.Write(arr3[i] + (i != size - 1 ? " , " : ""));
             Console.WriteLine("\n");
 
+            
+            
             // Task 6
             count = 0;
+            max = 0;
+            tmp = 1;
             int[,] matrix = new int[size ,2];
             for (int i = 0; i < size - 1; i++)
             {
@@ -105,29 +110,28 @@ namespace Basics_of_CS2
                 }
             }
             matrix[count, 1] = size - 1;
-            max = 0;
-            tmp = 1;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < size; i++)
             {
                 if (matrix[i, 1] == 0 && i != 0) break;
                 if (max < matrix[i, 1] - matrix[i, 0]) max = matrix[i, 1] - matrix[i, 0];
             }
-            Console.WriteLine(" The largest sequences by growth in Array3 :\n");
-            for (int i = 0; i < count; i++)
+            if (max != 0)
             {
-                if (matrix[i, 1] == 0 && i != 0) break;
-                if (max == matrix[i, 1] - matrix[i, 0])
+                Console.WriteLine(" The largest sequences by growth in Array3 :\n");
+                for (int i = 0; i < size; i++)
                 {
-                    Console.Write($" {tmp++}) ");
-                    for (int y = matrix[i, 0]; y<= matrix[i, 1];y++)
-                        Console.Write(arr3[y] + (y != matrix[i, 1] ? " , " : ""));
-                    Console.WriteLine("\n");
+                    if (matrix[i, 1] == 0 && i != 0) break;
+                    if (max == matrix[i, 1] - matrix[i, 0])
+                    {
+                        Console.Write($" {tmp++}) ");
+                        for (int y = matrix[i, 0]; y <= matrix[i, 1]; y++)
+                            Console.Write(arr3[y] + (y != matrix[i, 1] ? " , " : ""));
+                        Console.WriteLine("\n");
+                    }
                 }
             }
-
+            else Console.WriteLine(" The Array3 does not have ascending sequence.\n");
             Console.ReadKey();
         }
-
-        
     }
 }
