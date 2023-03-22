@@ -35,7 +35,6 @@ namespace Basics_of_CS2
                     ++count;
                 }
 
-
                 // Task 4
                 if (arr[i] % 2 != 0 && arr[i] < 0)
                 {
@@ -87,15 +86,13 @@ namespace Basics_of_CS2
             for (int i = 0; i < size; i++)
                 Console.Write(arr2[i] + (i != size - 1 ? " , " : ""));
             Console.WriteLine("\n");
-            Array.Sort(arr3);
-            Array.Reverse(arr3);
+            //Array.Sort(arr3);
+            //Array.Reverse(arr3);
             Console.Write(" Array3 : ");
             for (int i = 0; i < size; i++)
                 Console.Write(arr3[i] + (i != size - 1 ? " , " : ""));
             Console.WriteLine("\n");
-
-            
-            
+           
             // Task 6
             count = 0;
             max = 0;
