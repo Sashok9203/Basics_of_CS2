@@ -4,15 +4,16 @@ namespace Basics_of_CS2
 {
     internal class Program
     {
+
         public struct Range
         {
             public int start;
             public int end;
         };
+
         static void Main(string[] args)
         {
-          
-        bool equals = false;
+            bool equals = false;
             const int size = 15;
             float sum = 0;
             int min = int.MaxValue, 
@@ -22,7 +23,7 @@ namespace Basics_of_CS2
                 ind = 0;
             Random rnd = new Random();
 
-            int[] arr = new int[size];
+            int[] arr  = new int[size];
             int[] arr2 = new int[arr.Length];
 
             Console.Write(" Array : ");
@@ -78,7 +79,7 @@ namespace Basics_of_CS2
             int[] arr3 = new int[size];
             for (int i = 0; i < size; i++)
             {
-                arr[i] = rnd.Next(10, 31);
+                arr[i]  = rnd.Next(10, 31);
                 arr2[i] = rnd.Next(10, 31);
                 arr3[i] = arr[i] + arr2[i];
             }
@@ -103,6 +104,7 @@ namespace Basics_of_CS2
             count = max = 0;
             tmp = 1;
             Range[] ranges = new Range[size];
+
             for (int i = 0; i < size - 1; i++)
             {
                 if (arr3[i] >= arr3[i + 1]) 
@@ -112,11 +114,13 @@ namespace Basics_of_CS2
                 }
             }
             ranges[count].end = size - 1;
+
             for (int i = 0; i < size; i++)
             {
                 if (ranges[i].end == 0 && i != 0) break;
                 if (max < ranges[i].end - ranges[i].start) max = ranges[i].end - ranges[i].start;
             }
+
             if (max != 0)
             {
                 Console.WriteLine(" The largest sequences by growth in Array3 :\n");
