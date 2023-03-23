@@ -4,9 +4,15 @@ namespace Basics_of_CS2
 {
     internal class Program
     {
+        public struct Range
+        {
+            public int start;
+            public int end;
+        };
         static void Main(string[] args)
         {
-            bool equals = false;
+          
+        bool equals = false;
             const int size = 15;
             float sum = 0;
             int min = int.MaxValue, 
@@ -94,35 +100,34 @@ namespace Basics_of_CS2
             Console.WriteLine("\n");
            
             // Task 6
-            count = 0;
-            max = 0;
+            count = max = 0;
             tmp = 1;
-            int[,] matrix = new int[size ,2];
+            Range[] ranges = new Range[size];
             for (int i = 0; i < size - 1; i++)
             {
                 if (arr3[i] >= arr3[i + 1]) 
                 {
-                    matrix[count++,1] = i;
-                    matrix[count,0] = i + 1;
+                    ranges[count++].end = i;
+                    ranges[count].start = i + 1;
                 }
             }
-            matrix[count, 1] = size - 1;
+            ranges[count].end = size - 1;
             for (int i = 0; i < size; i++)
             {
-                if (matrix[i, 1] == 0 && i != 0) break;
-                if (max < matrix[i, 1] - matrix[i, 0]) max = matrix[i, 1] - matrix[i, 0];
+                if (ranges[i].end == 0 && i != 0) break;
+                if (max < ranges[i].end - ranges[i].start) max = ranges[i].end - ranges[i].start;
             }
             if (max != 0)
             {
                 Console.WriteLine(" The largest sequences by growth in Array3 :\n");
                 for (int i = 0; i < size; i++)
                 {
-                    if (matrix[i, 1] == 0 && i != 0) break;
-                    if (max == matrix[i, 1] - matrix[i, 0])
+                    if (ranges[i].end == 0 && i != 0) break;
+                    if (max == ranges[i].end - ranges[i].start)
                     {
                         Console.Write($" {tmp++}) ");
-                        for (int y = matrix[i, 0]; y <= matrix[i, 1]; y++)
-                            Console.Write(arr3[y] + (y != matrix[i, 1] ? " , " : ""));
+                        for (int y = ranges[i].start; y <= ranges[i].end; y++)
+                            Console.Write(arr3[y] + (y != ranges[i].end ? " , " : ""));
                         Console.WriteLine("\n");
                     }
                 }
